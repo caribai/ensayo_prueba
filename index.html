@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>BikeShop Catalog & Inventory</title>
+</head>
+<body>
+    <h1>Monitor de Inventario</h1>
+    <form>
+        <div class="form-group text-center">
+          <h5>Realizar una Transferencia</h5>
+          <hr class="bg-white w-50" />
+          <div
+            class="d-flex align-items-center justify-content-center flex-wrap"
+          >
+            <div class="mr-2">
+              Tienda:
+              <select
+                id="emisor"
+                class="form-control mx-2 w-auto d-inline"
+              ></select>
+            </div>
+
+            <div class="mr-3">
+              Categoria:
+              <select
+                id="receptor"
+                class="form-control mx-2 w-auto d-inline"
+              ></select>
+            </div>
+
+            <div class="mr-3">
+                Marca:
+                <select
+                  id="receptor"
+                  class="form-control mx-2 w-auto d-inline"
+                ></select>
+              </div>
+
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </div>
+      </form>
+</body>
+</html>
