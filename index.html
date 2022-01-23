@@ -24,6 +24,7 @@
             <div class="mr-2">
               Tienda:
               <select
+                name="stores"
                 id="stores"
                 class="form-control mx-2 w-auto d-inline"
               ></select>
@@ -32,6 +33,7 @@
             <div class="mr-3">
               Categoria:
               <select
+                name="categories"
                 id="categories"
                 class="form-control mx-2 w-auto d-inline"
               ></select>
@@ -40,6 +42,7 @@
             <div class="mr-3">
                 Marca:
                 <select
+                  name="brands"
                   id="brands"
                   class="form-control mx-2 w-auto d-inline"
                 ></select>
@@ -49,6 +52,13 @@
           </div>
         </div>
       </form>
+      <div><table class="table" id="tabla"><thead><tr>
+        <th scope="col">Tienda</th>
+        <th scope="col">Id del producto</th>
+        <th scope="col">Nombre del producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Categoria</th>
+      </tr></thead><tbody></tbody></table></div>
     </div>
       <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -86,6 +96,35 @@
     });
   };
   getData()
+
+  $("button").click(async(e)=>{
+    e.preventDefault();
+     const stores = $("#stores").val()
+     const categories = $("#categories").val()
+     const brands = $("#brands").val()
+     const payload = {stores,categories,brands}
+     try{
+       const {data: search} = await axios.post('/search', payload)
+       console.log(search)
+       $("tbody").html("")
+       $.each(search, (i, c) => {
+       $("tbody").append(`
+              <tr>
+                <td>${c.store_name}</td>
+                <td>${c.product_id}</td>
+                <td>${c.product_name}</td>
+                <td>${c.quantity}</td>
+                <td>${c.category_name}</td>
+              </tr>
+         `);
+            })
+     } catch ({response}) {
+       const {data} = response
+       const {error} = data
+       alert(error)
+     }
+ })
+
       </script>
 </body>
 </html>

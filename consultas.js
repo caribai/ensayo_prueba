@@ -24,4 +24,8 @@ async function getBrands() {
     return result.rows
 }
 
-module.exports = {getcustomers,getStores,getCategories,getBrands}
+async function searchData(store,category,brand) {
+    const result = await pool.query(`SELECT stores.store_name, products.product_id, products.product_name, stocks.quantity, categories.category_name, brands.brand_name from products INNER JOIN stocks ON stocks.product_id=products.product_id INNER JOIN stores ON stores.store_id=stocks.store_id INNER JOIN categories ON categories.category_id=products.category_id INNER JOIN brands ON brands.brand_id=products.brand_id WHERE store_name='${store}' AND category_name='${category}' AND brand_name='${brand}';`)
+    return result.rows
+}
+module.exports = {getcustomers,getStores,getCategories,getBrands,searchData}
