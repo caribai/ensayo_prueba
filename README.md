@@ -12,4 +12,6 @@ BikeShop Catalog & Inventory
 
 3.Crear Monitor de Ordenes
 
+    Escribir por consola: node index.js
+
 
